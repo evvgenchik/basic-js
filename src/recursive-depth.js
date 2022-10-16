@@ -25,7 +25,7 @@ class DepthCalculator {
 			number = Math.max(number, this.calculateDepth(item)); number + 1
 		}
 
-		return number
+		return number + 1
 
 	}
 }

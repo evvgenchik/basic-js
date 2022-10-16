@@ -44,26 +44,30 @@ function getDNSStats(domains) {
 		}
 	}
 
-	console.log(arr1);
-	console.log(arr2);
-	console.log(arr3);
+
 
 	if (arr1.length) {
-		return `{"${arr3[0]}" : ${arr3.length}, "${arr2[0]}" : ${arr2.length}, "${arr1[0]}" : ${arr1.length}}`
+		finalObj["." + arr3[0]] = arr3.length;
+		finalObj["." + arr3[0] + "." + [arr2[0]]] = arr2.length;
+		finalObj["." + arr3[0] + "." + [arr2[0] + "." + [arr1[0]]]] = arr1.length;
+		return finalObj
 	} else if (arr2.length) {
-		return `{"${arr3[0]}" : ${arr3.length}, "${arr2[0]}" : ${arr2.length}}`
+		finalObj["." + arr3[0]] = arr3.length;
+		finalObj["." + arr3[0] + "." + [arr2[0]]] = arr2.length;
+		return finalObj
+
 	} else if (arr3.length) {
-		return `{"${arr3[0]}" : ${arr3.length}}`
+		finalObj["." + arr3[0]] = arr3.length;
+		return finalObj
+
 	} else {
 		return {}
 	}
 
+
 }
 
-console.log(getDNSStats(['epam.com'])),// { '.com': 1, '.com.epam': 1 });
-	// console.log(getDNSStats(['epam.com', 'info.epam.com'])),//  { '.com': 2, '.com.epam': 2, '.com.epam.info': 1 })
-	// console.log(getDNSStats([])),//  {}
 
-	module.exports = {
-		getDNSStats
-	};
+module.exports = {
+	getDNSStats
+};
