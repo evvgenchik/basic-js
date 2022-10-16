@@ -24,12 +24,7 @@ function deleteDigit(n) {
 	return number
 }
 
-console.log(deleteDigit(152))// 52);
-// deleteDigit(1001), //101);
-// 	deleteDigit(10), //1);
-// 	deleteDigit(222219),// 22229);
-// 	deleteDigit(109), //19);
-// 	deleteDigit(342), //42);
+
 
 module.exports = {
 	deleteDigit
